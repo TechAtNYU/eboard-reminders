@@ -8,20 +8,21 @@ import datetime
 
 
 class Event(object):
-
-    def __init__(self, event_id, creator, title, time_start, time_end):
+    def __init__(self, event_id, creator, title, time_start, time_end, status):
         """
         Defines an event from the Intranet
         :param creator: string
         :param title: string
         :param time_start: string
         :param time_end: string
+        :param status: string
         """
         self.event_id = event_id
         self.creator = creator
         self.title = title
         self.start_time = Event.format_time_object(time_start)
         self.end_time = Event.format_time_object(time_end)
+        self.status = status
         self.event_url = ""
         self.errors = []
 
@@ -65,3 +66,6 @@ class Event(object):
 
         if self.end_time - self.start_time > LENGTH_ERROR:
             self.errors.append("Alert: Event longer than two hours")
+
+        if not self.status == "announced":
+            self.errors.append("Alert: Event is not marked as announced (Marked as " + self.status + ")")

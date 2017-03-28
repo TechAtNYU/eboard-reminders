@@ -5,6 +5,7 @@
 #
 
 import requests
+
 import Event
 
 
@@ -32,7 +33,8 @@ class EventGrabber(object):
             data_iteration = 0
             for key in data["data"]:
                 att = key["attributes"]
-                event = Event.Event(key["id"], "NO NAME", att["title"], att["startDateTime"], att["endDateTime"])
+                event = Event.Event(key["id"], "NO NAME", att["title"], att["startDateTime"],
+                                    att["endDateTime"], att["status"])
 
                 included_iteration = 0
                 for keyi in data["included"]:
