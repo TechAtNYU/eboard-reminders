@@ -10,7 +10,7 @@ import EventGrabber
 import SlackInterpreter
 
 # TODO: Check for events that happened two days ago
-
+API_URL = "https://api.tnyu.org/v3/"
 
 def update_queue(notification_queue, days):
     """
@@ -19,7 +19,7 @@ def update_queue(notification_queue, days):
     :param days: The days prior to event in which to remind the user
     :return: notification_queue
     """
-    event_grabber = EventGrabber.EventGrabber(str(os.environ["INTRANET_URL"]), str(os.environ["INTRANET_TOKEN"]))
+    event_grabber = EventGrabber.EventGrabber(API_URL, str(os.environ["TNYU_API_KEY"]))
     upcoming_events = event_grabber.get_list_of_upcoming_events()
 
     for e in upcoming_events:

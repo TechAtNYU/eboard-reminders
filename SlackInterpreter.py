@@ -13,7 +13,7 @@ class SlackInterpreter(object):
     def __init__(self):
         # CRITICAL: THIS IS SLACK BACK'S THIS WILL NEED TO CHANGE
         self.BOT_ID = "U2JAPPT8R"
-        self.API_TOKEN = os.environ["SLACK_API_TOKEN"]
+        self.API_TOKEN = os.environ["SLACK_ER_BOT_TOKEN"]
         self.slack_client = SlackClient(self.API_TOKEN)
 
     def connect(self):

@@ -2,19 +2,22 @@
 
 ## Installation
 
-### Requirements
-
-`slackclient`
-`requests`
+### Install Dependencies
+```
+virtualenv .venv
+. .venv/bin/activate
+pip install -r requirements.txt
+```
 
 ### Environment Variables (Virtual Enviroment Recommened)
 
-`$SLACK_API_TOKEN`
-`$INTRANET_TOKEN`
-`$INTRANET_URL`
+```
+$SLACK_BACK_BOT_TOKEN
+$TNYU_API_KEY
+```
 
 ## Todo
 
-* Get a real bot id for Slack (currently using Slack Back's)
-* Get stats on event
-* Systemd service and timer
+* [x] Get a real bot id for Slack (currently using Slack Back's)
+* [ ] Get stats on event
+* [ ] Systemd service and timer
