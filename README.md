@@ -16,6 +16,12 @@ $SLACK_BACK_BOT_TOKEN
 $TNYU_API_KEY
 ```
 
+## To Run
+
+```
+python EventReminders.py
+```
+
 ## Todo
 
 * [x] Get a real bot id for Slack (currently using Slack Back's)

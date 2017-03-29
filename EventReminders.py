@@ -10,7 +10,7 @@ import EventGrabber
 import SlackInterpreter
 
 # TODO: Check for events that happened two days ago
-API_URL = "https://api.tnyu.org/v3/"
+API_URL = "https://api.tnyu.org/v3"
 
 def update_queue(notification_queue, days):
     """

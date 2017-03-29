@@ -15,7 +15,7 @@ class EventGrabber(object):
         :param url: string
         :param auth_token: string
         """
-        self.url = url
+        self.url = url + '/events/upcoming?include=addedBy'
         self.auth_token = auth_token
 
     def get_list_of_upcoming_events(self):
@@ -25,11 +25,10 @@ class EventGrabber(object):
         :return: Array of Events
         """
         events = []
-        auth = "Basic " + self.auth_token
+        auth = "Bearer " + self.auth_token
         req = requests.get(self.url, headers={"Authorization": auth})
         try:
             data = req.json()
-
             data_iteration = 0
             for key in data["data"]:
                 att = key["attributes"]
