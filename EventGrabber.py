@@ -31,17 +31,41 @@ class EventGrabber(object):
             data = req.json()
             data_iteration = 0
             for key in data["data"]:
-                att = key["attributes"]
-                event = Event.Event(key["id"], "NO NAME", att["title"], att["startDateTime"],
-                                    att["endDateTime"], att["status"])
 
+                # Get values from attributes for Event init
+                id = ""
+                name = ""
+                title = ""
+                startDateTime = ""
+                endDateTime = ""
+                status = ""
+                url = ""
+
+                att = key["attributes"]
+
+                if "id" in key:
+                    id = key["id"]
+                if "title" in att:
+                    title = att["title"]
+                if "startDateTime" in att:
+                    startDateTime = att["startDateTime"]
+                if "endDateTime" in att:
+                    endDateTime = att["endDateTime"]
+                if "status" in att:
+                    status = att["status"]
+                if "self" in key["links"]:
+                    url = key["links"]["self"]
+
+                # Find Name
                 included_iteration = 0
-                for keyi in data["included"]:
+                for incl in data["included"]:
                     if included_iteration == data_iteration:
-                        event.creator = keyi["attributes"]["name"]
+                        name = incl["attributes"]["name"]
                     included_iteration += 1
 
-                event.event_url = key["links"]["self"]
+                # Create and check event
+                event = Event.Event(id, name, title, startDateTime, endDateTime, status)
+                event.event_url = url
                 event.check_event_for_errors()
                 events.append(event)
                 data_iteration += 1
