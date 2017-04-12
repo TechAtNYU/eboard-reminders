@@ -21,9 +21,3 @@ $TNYU_API_KEY
 ```
 python EventReminders.py
 ```
-
-## Todo
-
-* [x] Get a real bot id for Slack (currently using Slack Back's)
-* [ ] Get stats on event
-* [ ] Systemd service and timer
